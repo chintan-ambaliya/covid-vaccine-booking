@@ -11,6 +11,7 @@ from utils import generate_token_OTP, generate_token_OTP_manual, check_and_book,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--token', help='Pass token directly')
+    parser.add_argument('--mobile', help='Pass mobile')
     args = parser.parse_args()
 
     filename = 'vaccine-booking-details-'
@@ -27,6 +28,8 @@ def main():
         token = None
         if args.token:
             token = args.token
+            mobile = args.mobile
+            filename = filename + mobile + ".json"
         else:
             mobile = input("Enter the registered mobile number: ")
             filename = filename + mobile + ".json"
